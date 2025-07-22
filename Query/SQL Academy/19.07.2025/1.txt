@@ -1,0 +1,12 @@
+SELECT u.id,
+	u.name,
+	u.email,
+	u.email_verified_at,
+	u.password,
+	u.phone_number
+FROM Users AS u
+	JOIN Rooms AS r ON u.id = r.owner_id
+WHERE r.price = (
+		SELECT max(Rooms.price)
+		FROM Rooms
+	);

@@ -1,0 +1,8 @@
+SELECT member_name,
+	(
+		SELECT max(P.unit_price)
+		FROM Payments AS P
+			RIGHT JOIN FamilyMembers AS F ON F.member_id = P.family_member
+		WHERE F.member_id = Family.member_id
+	) AS good_price
+FROM FamilyMembers AS Family
