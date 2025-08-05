@@ -9,13 +9,20 @@ CREATE OR ALTER PROCEDURE add_user
 AS
 BEGIN
 	INSERT INTO users (login, password, name, surname, patronymic, mail, phone_number) VALUES
-	(@login, HASHBYTES('SHA2_256', @password), @name, @surname, @patronymic, @mail, @phone_number);
+	(@login, @password, @name, @surname, @patronymic, @mail, @phone_number);
 END
 
-EXEC add_user newuser, '12345678', N'Федор', N'Федоров', N'Федорович', 'newuser@mail.ru', '+79428328282';
+EXEC add_user 
+	@login = 'newuser',
+    @password = '12345678',
+    @name = N'Федор',
+    @surname = N'Федоров',
+    @patronymic = N'Федорович',
+    @mail = 'newuser@mail.ru',
+    @phone_number = '+79428328282';
 
 -- Для отображения, если нужно
 SELECT * FROM users;
 
 -- Для очистки, если нужно
-DELETE FROM users WHERE id = 6;
+DELETE FROM users WHERE id >= 7;

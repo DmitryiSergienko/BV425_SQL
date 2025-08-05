@@ -5,5 +5,6 @@ BEGIN
 	SELECT * FROM products
 	WHERE name like '%' + @name + '%';
 END;
+GO
 
 EXEC search_products_by_name N'Книга';

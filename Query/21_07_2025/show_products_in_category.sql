@@ -7,5 +7,6 @@ BEGIN
 	JOIN categories AS c ON pc.category_id = c.id
 	WHERE c.id = @category_id;
 END;
+GO
 
-EXEC show_products_in_category 6;
+EXEC show_products_in_category 5;

@@ -7,7 +7,7 @@ GO
 CREATE TABLE users(
 	id						INT IDENTITY(1,1) PRIMARY KEY,
 	login					NVARCHAR(50) NOT NULL UNIQUE,
-	password				VARBINARY(100) CHECK (LEN(Password) >= 8),
+	password				NVARCHAR(100) CHECK (LEN(Password) >= 8),
 	name					NVARCHAR(100) NOT NULL,
 	surname					NVARCHAR(100),
 	patronymic				NVARCHAR(100),
@@ -102,11 +102,11 @@ CREATE TABLE order_history(
 
 -- === USERS ===
 INSERT INTO users (login, password, name, surname, patronymic, mail, phone_number, registration_date) VALUES
-('ivan_ivanov',     HASHBYTES('SHA2_256', 'pass1234'),		N'Иван',         N'Иванов',       N'Иванович',     'ivanov@mail.ru',           '+79011234567', '2025-01-10 08:30:00'),
-('petr_petrov',     HASHBYTES('SHA2_256', 'pass5678'),		N'Пётр',         N'Петров',       N'Петрович',     'petrov@mail.ru',           '+79022345678', '2025-01-12 10:15:00'),
-('anna_smirnova',   HASHBYTES('SHA2_256', 'anna2025'),		N'Анна',         N'Смирнова',     N'Олеговна',     'anna.s@domain.com',        '+79033456789', '2025-01-14 13:45:00'),
-('sergey_kozlov',   HASHBYTES('SHA2_256', 'kozlov777'),		N'Сергей',       N'Козлов',       N'Сергеевич',    'kozlov_s@email.ru',        '+79044567890', '2025-01-16 16:20:00'),
-('maria_fedorova',  HASHBYTES('SHA2_256', 'masha123'),		N'Мария',        N'Фёдорова',     N'Алексеевна',   'fedorova.m@site.com',      '+79055678901', '2025-01-18 19:05:00'),
+('ivan_ivanov',     'pass1234',		N'Иван',         N'Иванов',       N'Иванович',     'ivanov@mail.ru',           '+79011234567', '2025-01-10 08:30:00'),
+('petr_petrov',     'pass5678',		N'Пётр',         N'Петров',       N'Петрович',     'petrov@mail.ru',           '+79022345678', '2025-01-12 10:15:00'),
+('anna_smirnova',   'anna2025',		N'Анна',         N'Смирнова',     N'Олеговна',     'anna.s@domain.com',        '+79033456789', '2025-01-14 13:45:00'),
+('sergey_kozlov',   'kozlov777',		N'Сергей',       N'Козлов',       N'Сергеевич',    'kozlov_s@email.ru',        '+79044567890', '2025-01-16 16:20:00'),
+('maria_fedorova',  'masha123',		N'Мария',        N'Фёдорова',     N'Алексеевна',   'fedorova.m@site.com',      '+79055678901', '2025-01-18 19:05:00'),
 ('no_pass',   NULL,		N'Empty',       N'Empty',       N'Empty',    'empty@email.ru',        '+79044567890', '2025-01-16 16:20:00');
 
 -- === CATEGORIES ===
